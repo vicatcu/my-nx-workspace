@@ -1,11 +1,40 @@
 {
   "version": 2,
   "projects": {
+    "aqe-util": {
+      "projectType": "library",
+      "root": "libs/aqe-util",
+      "sourceRoot": "libs/aqe-util/src",
+      "prefix": "",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/angular:ng-packagr-lite",
+          "options": {
+            "tsConfig": "libs/aqe-util/tsconfig.lib.json",
+            "project": "libs/aqe-util/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/aqe-util/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/aqe-util/src/**/*.ts",
+              "libs/aqe-util/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
     "webportal": {
       "projectType": "application",
       "root": "apps/webportal",
       "sourceRoot": "apps/webportal/src",
-      "prefix": "",
+      "prefix": "aqe",
       "targets": {
         "build": {
           "executor": "@angular-devkit/build-angular:browser",
@@ -17,20 +46,11 @@
             "tsConfig": "apps/webportal/tsconfig.app.json",
             "aot": true,
             "assets": [
-              {
-                "glob": "**/*",
-                "input": "apps/webportal/src/assets",
-                "output": "assets"
-              },
-              {
-                "glob": "**/*.svg",
-                "input": "node_modules/ionicons/dist/ionicons/svg",
-                "output": "./svg"
-              }
+              "apps/webportal/src/favicon.ico",
+              "apps/webportal/src/assets"
             ],
             "styles": [
-              "apps/webportal/src/global.scss",
-              "apps/webportal/src/theme/variables.scss"
+              "apps/webportal/src/styles.scss"
             ],
             "scripts": []
           },
@@ -89,40 +109,6 @@
               "apps/webportal/src/**/*.html"
             ]
           }
-        },
-        "test": {
-          "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/apps/webportal"
-          ],
-          "options": {
-            "jestConfig": "apps/webportal/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "ionic-cordova-build": {
-          "executor": "@ionic/angular-toolkit:cordova-build",
-          "options": {
-            "browserTarget": "app:build"
-          },
-          "configurations": {
-            "production": {
-              "browserTarget": "app:build:production"
-            }
-          }
-        },
-        "ionic-cordova-serve": {
-          "executor": "@ionic/angular-toolkit:cordova-serve",
-          "options": {
-            "cordovaBuildTarget": "app:ionic-cordova-build",
-            "devServerTarget": "app:serve"
-          },
-          "configurations": {
-            "production": {
-              "cordovaBuildTarget": "app:ionic-cordova-build:production",
-              "devServerTarget": "app:serve:production"
-            }
-          }
         }
       }
     },
@@ -149,35 +135,6 @@
           "options": {
             "lintFilePatterns": [
               "apps/webportal-e2e/**/*.{js,ts}"
-            ]
-          }
-        }
-      }
-    },
-    "aqe-util": {
-      "projectType": "library",
-      "root": "libs/aqe-util",
-      "sourceRoot": "libs/aqe-util/src",
-      "prefix": "",
-      "targets": {
-        "build": {
-          "executor": "@nrwl/angular:ng-packagr-lite",
-          "options": {
-            "tsConfig": "libs/aqe-util/tsconfig.lib.json",
-            "project": "libs/aqe-util/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "libs/aqe-util/tsconfig.lib.prod.json"
-            }
-          }
-        },
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/aqe-util/src/**/*.ts",
-              "libs/aqe-util/src/**/*.html"
             ]
           }
         }

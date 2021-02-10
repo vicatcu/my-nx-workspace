@@ -12,11 +12,11 @@
       "rules": {
         "@angular-eslint/directive-selector": [
           "error",
-          { "type": "attribute", "prefix": "", "style": "camelCase" }
+          { "type": "attribute", "prefix": "aqe", "style": "camelCase" }
         ],
         "@angular-eslint/component-selector": [
           "error",
-          { "type": "element", "prefix": "", "style": "kebab-case" }
+          { "type": "element", "prefix": "aqe", "style": "kebab-case" }
         ]
       }
     },
