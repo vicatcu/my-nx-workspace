@@ -1,0 +1,7 @@
+{
+  "name": "webportal",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

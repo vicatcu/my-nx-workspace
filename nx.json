@@ -1,5 +1,5 @@
 {
-  "npmScope": "nx-ionic",
+  "npmScope": "aqe",
   "affected": {
     "defaultBase": "master"
   },
@@ -18,14 +18,20 @@
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
       "options": {
-        "cacheableOperations": [
-          "build",
-          "lint",
-          "test",
-          "e2e"
-        ]
+        "cacheableOperations": ["build", "lint", "test", "e2e"]
       }
     }
   },
-  "projects": {}
+  "projects": {
+    "webportal": {
+      "tags": []
+    },
+    "webportal-e2e": {
+      "tags": [],
+      "implicitDependencies": ["webportal"]
+    },
+    "aqe-util": {
+      "tags": []
+    }
+  }
 }

@@ -14,7 +14,9 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@aqe/utils": ["libs/aqe-util/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
